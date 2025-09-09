@@ -77,6 +77,7 @@ rm -rf "Build/MobileTransfer.zip"
 
 echo "[*] stapling ticket..."
 xcrun stapler staple $APP_PATH
+spctl -a -v $APP_PATH
 
 echo "[*] copying..."
 cp -a $APP_PATH $WORKSPACE/MobileTransfer.app

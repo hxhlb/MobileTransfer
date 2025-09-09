@@ -38,6 +38,7 @@
 		505F4BE52CA2E746008BE817 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 505F4BE42CA2E745008BE817 /* Foundation.framework */; };
 		505F4C1E2CA2E86F008BE817 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F4C192CA2E86F008BE817 /* main.swift */; };
 		505F4C202CA2E86F008BE817 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 505F4C172CA2E86F008BE817 /* Assets.xcassets */; };
+		5061E0D62E7076BF000D8615 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5061E0D52E7076BF000D8615 /* Optional.swift */; };
 		507CA2902CA5CE5700492E81 /* MobileInstallTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CA28F2CA5CE5700492E81 /* MobileInstallTask.swift */; };
 		507CA2922CA5DBA200492E81 /* InstallApplicationTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CA2912CA5DBA200492E81 /* InstallApplicationTaskView.swift */; };
 		507CF2BC2CA69A8F00B581CF /* AgreementSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 507CF2BB2CA69A8F00B581CF /* AgreementSheetView.swift */; };
@@ -137,6 +138,7 @@
 		505F4C172CA2E86F008BE817 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		505F4C192CA2E86F008BE817 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		505F4C1A2CA2E86F008BE817 /* Entitlements.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Entitlements.entitlements; sourceTree = "<group>"; };
+		5061E0D52E7076BF000D8615 /* Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optional.swift; sourceTree = "<group>"; };
 		507CA28F2CA5CE5700492E81 /* MobileInstallTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobileInstallTask.swift; sourceTree = "<group>"; };
 		507CA2912CA5DBA200492E81 /* InstallApplicationTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstallApplicationTaskView.swift; sourceTree = "<group>"; };
 		507CF2BB2CA69A8F00B581CF /* AgreementSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementSheetView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				505386852CA3BDE70087A63A /* Result.swift */,
 				505386862CA3BDE70087A63A /* NSImage.swift */,
 				505386872CA3BDE70087A63A /* Alert.swift */,
+				5061E0D52E7076BF000D8615 /* Optional.swift */,
 				505386882CA3BDE70087A63A /* SavePanel.swift */,
 				505386892CA3BDE70087A63A /* DecodeSize.swift */,
 				509001C12CC82C9200F97585 /* MainThread.swift */,
@@ -495,7 +498,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1610;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					505F4BCE2CA2E709008BE817 = {
 						CreatedOnToolsVersion = 16.0;
@@ -626,6 +629,7 @@
 				50A4C9672CC1035400954D3E /* LicenseInfoView.swift in Sources */,
 				50F485352CA3D11D0000FEF6 /* ContentView.swift in Sources */,
 				505386A32CA3C7160087A63A /* ActionMenuView.swift in Sources */,
+				5061E0D62E7076BF000D8615 /* Optional.swift in Sources */,
 				50C18C5D2CA42B4400F9F428 /* MobileAppConnectTask.swift in Sources */,
 				50869ED22CA53B9000B44553 /* BackupTaskView.swift in Sources */,
 				5053868E2CA3BDE70087A63A /* FileManager.swift in Sources */,
@@ -738,6 +742,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 964G86XT2P;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -804,6 +809,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 964G86XT2P;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -839,7 +845,6 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 964G86XT2P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -877,7 +882,6 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 964G86XT2P;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -937,7 +941,7 @@
 			repositoryURL = "https://github.com/Lakr233/ColorfulX.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.5.2;
+				minimumVersion = 5.6.6;
 			};
 		};
 		5053869A2CA3C0670087A63A /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
@@ -945,7 +949,7 @@
 			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.5.0;
+				minimumVersion = 4.5.2;
 			};
 		};
 		508BA0032CB63BB700E8FD1B /* XCRemoteSwiftPackageReference "DockProgress" */ = {
@@ -961,7 +965,7 @@
 			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.1.0;
+				minimumVersion = 2.0.3;
 			};
 		};
 		50A7D5C32CA4398B00A9CBFB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -977,7 +981,7 @@
 			repositoryURL = "https://github.com/Lakr233/WindowAnimation";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
+				minimumVersion = 1.1.0;
 			};
 		};
 		50F485312CA3CEE10000FEF6 /* XCRemoteSwiftPackageReference "AppleMobileDeviceLibrary" */ = {
@@ -985,7 +989,7 @@
 			repositoryURL = "https://github.com/Lakr233/AppleMobileDeviceLibrary.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.1727232421;
+				minimumVersion = 1.0.1757394913;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

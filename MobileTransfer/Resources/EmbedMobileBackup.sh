@@ -5,7 +5,7 @@ set -o pipefail
 
 echo "    PROJECT_DIR: $PROJECT_DIR"
 echo "    CONFIGURATION: $CONFIGURATION"
-echo "    CODE_SIGN_IDENTITY: $CODE_SIGN_IDENTITY"
+echo "    EXPANDED_CODE_SIGN_IDENTITY: $EXPANDED_CODE_SIGN_IDENTITY"
 echo "    EXPANDED_CODE_SIGN_IDENTITY_NAME: $EXPANDED_CODE_SIGN_IDENTITY_NAME"
 echo "    DEVELOPMENT_TEAM: $DEVELOPMENT_TEAM"
 
@@ -41,7 +41,7 @@ if [ -n "$EXPANDED_CODE_SIGN_IDENTITY_NAME" ]; then
 fi
 
 MOBILE_BACKUP_TARGET="$AUX_BINARY_DIR/MobileBackup"
-codesign --force --sign "$CODE_SIGN_IDENTITY" \
+codesign --force --sign "$EXPANDED_CODE_SIGN_IDENTITY" \
     --entitlements "$PROJECT_DIR/MobileTransfer/Entitlements-Subprocess.entitlements" \
     -o runtime \
     "$BINARY_CACHE"

@@ -89,10 +89,12 @@ struct PrepareRestoreView: View {
                 "The backup was created on a newer version of iOS. Please update the device to the latest version before restoring.",
                 comment: ""
             )
-            alert.addButton(withTitle: NSLocalizedString("Continue Anyway", comment: ""))
+            alert.addButton(withTitle: NSLocalizedString("Continue Anyway (Ignore Error)", comment: ""))
+            alert.addButton(withTitle: NSLocalizedString("Continue Anyway (Modify Backup)", comment: ""))
             alert.addButton(withTitle: NSLocalizedString("Upgrade with Finder", comment: ""))
-            alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
-            alert.buttons.first?.hasDestructiveAction = true
+            alert.addButton(withTitle: NSLocalizedString("Abort", comment: ""))
+            alert.buttons[0].hasDestructiveAction = true
+            alert.buttons[1].hasDestructiveAction = true
             alert.alertStyle = .critical
             alert.beginSheetModal(for: window) { response in
                 if response == .alertFirstButtonReturn {
@@ -100,6 +102,8 @@ struct PrepareRestoreView: View {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         start()
                     }
+                } else if response == .alertSecondButtonReturn {
+                    replaceBackupManifestWithCurrentSystemVersion()
                 } else if response == .alertSecondButtonReturn {
                     // just open Finder
                     NSWorkspace.shared.openApplication(
@@ -200,7 +204,7 @@ struct PrepareRestoreView: View {
         guard let device else { return false }
         return device.store.value as? Bool ?? false
     }
-
+    
     func checkIfBackupVersionMatchesRequirements() -> Bool {
         guard let udid = vm.deviceIdentifier else {
             assertionFailure()
@@ -221,6 +225,122 @@ struct PrepareRestoreView: View {
         }
         assert(deviceVersion.count == backupVersion.count)
         return deviceVersion.lowercased() >= backupVersion.lowercased()
+    }
+    
+    func replaceBackupManifestWithCurrentSystemVersion() {
+        guard let udid = vm.deviceIdentifier else { return }
+        guard let window = NSApp.mainWindow else { return }
+
+        let query = AppleMobileDeviceManager.shared.obtainDeviceInfo(
+            udid: udid,
+            connection: .usb
+        )
+        guard let deviceProductVersion = query?.productVersion,
+              let deviceBuildVersion = query?.buildVersion
+        else {
+            assertionFailure()
+            return
+        }
+              
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString(
+            "Modify Backup Manifest",
+            comment: ""
+        )
+        alert.informativeText = String(
+            format: NSLocalizedString(
+            "The backup manifest created by %@ will be modified to match the current device system version %@ (%@). This may cause issues during restore. Please proceed with caution.",
+            comment: ""
+            ),
+            vm.restoreArchiveSystemBuildVersion,
+            deviceProductVersion,
+            deviceBuildVersion
+        )
+        alert.addButton(withTitle: NSLocalizedString("Modify", comment: ""))
+        alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
+        alert.buttons.first?.hasDestructiveAction = true
+        alert.alertStyle = .warning
+        alert.beginSheetModal(for: window) { response in
+            if response != .alertFirstButtonReturn { return }
+            
+            do {
+                let backup = URL(fileURLWithPath: try vm.restoreLocation.get())
+                
+                do {
+                    let manifestPath = backup
+                        .appendingPathComponent("Manifest")
+                        .appendingPathExtension("plist")
+                    let dic = try PropertyListSerialization.propertyList(
+                        from: try Data(contentsOf: manifestPath),
+                        options: [],
+                        format: nil
+                    )
+                    var manifest = try (dic as? [String: Any]).get()
+                    var lockdown = try (manifest["Lockdown"] as? [String: Any]).get()
+                    _ = try (lockdown["ProductVersion"] as? String).get()
+                    _ = try (lockdown["BuildVersion"] as? String).get()
+                    lockdown["ProductVersion"] = deviceProductVersion
+                    lockdown["BuildVersion"] = deviceBuildVersion
+                    manifest["Lockdown"] = lockdown
+                    let newData = try PropertyListSerialization.data(
+                        fromPropertyList: manifest,
+                        format: .xml,
+                        options: 0
+                    )
+                    try newData.write(to: manifestPath)
+                }
+                
+                do {
+                    let infoPath = backup
+                        .appendingPathComponent("Info")
+                        .appendingPathExtension("plist")
+                    let dic = try PropertyListSerialization.propertyList(
+                        from: try Data(contentsOf: infoPath),
+                        options: [],
+                        format: nil
+                    )
+                    var info = try (dic as? [String: Any]).get()
+                    _ = try (info["Product Version"] as? String).get()
+                    _ = try (info["Build Version"] as? String).get()
+                    info["Product Version"] = deviceProductVersion
+                    info["Build Version"] = deviceBuildVersion
+                    let newData = try PropertyListSerialization.data(
+                        fromPropertyList: info,
+                        format: .xml,
+                        options: 0
+                    )
+                    try newData.write(to: infoPath)
+                }
+                guard vm.validateRestoreArchive(at: backup) else {
+                    throw NSError(
+                        domain: "Error",
+                        code: -1,
+                        userInfo: [
+                            NSLocalizedDescriptionKey: NSLocalizedString(
+                                "The backup archive is corrupted after modification.",
+                                comment: ""
+                            )
+                        ]
+                    )
+                }
+                let alert = NSAlert()
+                alert.messageText = NSLocalizedString("Success", comment: "")
+                alert.informativeText = NSLocalizedString(
+                    "The backup manifest has been modified successfully.",
+                    comment: ""
+                )
+                alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+                alert.alertStyle = .informational
+                alert.beginSheetModal(for: window)
+            } catch {
+                let alert = NSAlert()
+                alert.messageText = NSLocalizedString("Error", comment: "")
+                alert.informativeText = error.localizedDescription
+                alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+                alert.alertStyle = .critical
+                alert.beginSheetModal(for: window)
+            }
+        }
     }
 
     func popEraseConfirm() {

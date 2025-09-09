@@ -95,6 +95,7 @@ class ViewModel: ObservableObject {
 
     var isLicenseTrail: Bool {
         guard let info = licenseInfo else { return false }
+        _ = info
 //        return [
 //            info.licensee == Mew.trailEmail,
 //            info.licenseKey == Mew.trailKey,

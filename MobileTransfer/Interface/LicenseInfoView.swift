@@ -72,7 +72,7 @@ struct LicenseInfoView: View {
                 .background(
                     Circle()
                         .hidden()
-                        .confettiCannon(counter: $counter, num: 64)
+                        .confettiCannon(trigger: $counter, num: 64)
                         .rotationEffect(.degrees(-45))
                 )
             }

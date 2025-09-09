@@ -69,7 +69,7 @@ echo "[*] notarizing..."
     "Build/MobileTransfer.zip"
 
 xcrun notarytool submit \
-    --keychain-profile "NotaryProfile@砍砍" \
+    --keychain-profile "Lakr233" \
     --wait \
     "Build/MobileTransfer.zip"
 

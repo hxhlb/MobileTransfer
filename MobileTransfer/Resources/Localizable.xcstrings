@@ -36,6 +36,16 @@
         }
       }
     },
+    "Abort" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "终止"
+          }
+        }
+      }
+    },
     "Activate" : {
       "localizations" : {
         "zh-Hans" : {
@@ -52,17 +62,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "激活许可证…"
-          }
-        }
-      }
-    },
-    "Activation Failed" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "激活失败"
           }
         }
       }
@@ -487,23 +486,32 @@
         }
       }
     },
+    "Continue Anyway (Ignore Error)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仍然继续（忽略错误）"
+          }
+        }
+      }
+    },
+    "Continue Anyway (Modify Backup)" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "仍然继续（修改备份）"
+          }
+        }
+      }
+    },
     "Continue to Restore" : {
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "继续并开始恢复流程"
-          }
-        }
-      }
-    },
-    "Continue Trail" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "继续试用"
           }
         }
       }
@@ -718,6 +726,16 @@
         }
       }
     },
+    "Error" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "错误"
+          }
+        }
+      }
+    },
     "Exit" : {
       "localizations" : {
         "zh-Hans" : {
@@ -764,17 +782,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "无法操作文件：%@"
-          }
-        }
-      }
-    },
-    "Failed to revoke license" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "无法注销许可证"
           }
         }
       }
@@ -1141,6 +1148,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "信息"
+          }
+        }
+      }
+    },
+    "Modify" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修改"
+          }
+        }
+      }
+    },
+    "Modify Backup Manifest" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "修改备份元数据"
           }
         }
       }
@@ -1618,17 +1645,6 @@
         }
       }
     },
-    "Start Trail" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "开始试用"
-          }
-        }
-      }
-    },
     "Status.plist not found" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1699,6 +1715,16 @@
         }
       }
     },
+    "Success" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成功"
+          }
+        }
+      }
+    },
     "Success %lld Failure %lld Total %lld" : {
       "localizations" : {
         "en" : {
@@ -1751,6 +1777,42 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "服务条款"
+          }
+        }
+      }
+    },
+    "The backup archive is corrupted after modification." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此备份在修改后损坏。"
+          }
+        }
+      }
+    },
+    "The backup manifest created by %@ will be modified to match the current device system version %@ (%@). This may cause issues during restore. Please proceed with caution." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "The backup manifest created by %1$@ will be modified to match the current device system version %2$@ (%3$@). This may cause issues during restore. Please proceed with caution."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此备份的元数据由 %1$@ 创建。将会使用 %2$@ (%3$@) 覆盖填充。这可能会使此备份在恢复过程中出现未知错误。请谨慎操作。"
+          }
+        }
+      }
+    },
+    "The backup manifest has been modified successfully." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "此备份的元数据已修改成功。"
           }
         }
       }

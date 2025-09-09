@@ -17,14 +17,14 @@ MobileTransfer is an app operating on MobileBackup (`idevicebackup2`). It offers
 - [x] Set backup password
 - [x] Backup to custom path and restore from there
 - [x] Increment backup (menu -> backup -> load checkpoint)
+- [x] Downgrade Restore (use with caution, may brick your device)
 
 ## Special Note
 
-This app was previously designed to be a paid app, but we are unable to provide reliable service on application backup/restore, and we have stopped developing or maintaining this app. We are open-sourcing this project to let the community continue the development.
+1. This app was previously designed to be a paid app, but we are unable to provide reliable service on application backup/restore, and we have stopped developing or maintaining this app. We are open-sourcing this project to let the community continue the development.
+2. If you have already selected a backup to restore and want to choose another, you must return to the welcome screen to reselect.
 
-## Activation
-
-To use this app, enter any email address and license key during the activation prompt.
+*To use this app, enter any email address and license key during the activation prompt.*
 
 ## License
 

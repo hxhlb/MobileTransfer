@@ -200,7 +200,7 @@ class MobileAppConnectTask: Identifiable {
             return
         }
 
-        let (account, software, downloadOutput) = prepareResult
+        let (_, software, downloadOutput) = prepareResult
 
         task.appAvatar = software.artworkUrl
         task.appName = software.name

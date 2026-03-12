@@ -23,7 +23,7 @@ extension ViewModel {
                 timer.invalidate()
                 return
             }
-            updateProgress()
+            Task { @MainActor in self.updateProgress() }
         }
     }
 
